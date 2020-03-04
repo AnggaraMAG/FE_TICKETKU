@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 export default class Jadwal extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container mt-5">
         <Table responsive className="text-center">
           <thead>
             <tr>

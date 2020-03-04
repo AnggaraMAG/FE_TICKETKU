@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Form, Nav, Dropdown, DropdownButton } from "react-bootstrap";
 import "../Landing/Css/Navbar.css";
+import Tambah from "../Admin/Modal/Tambah";
 
 export default class AdminNav extends Component {
   render() {
@@ -19,7 +20,9 @@ export default class AdminNav extends Component {
               id="dropdown-item-button"
               title="Admin"
             >
-              <Dropdown.Item as="button">Tambah Ticket</Dropdown.Item>
+              <Dropdown.Item>
+                <Tambah />
+              </Dropdown.Item>
               <Dropdown.Item as="button">Keluar</Dropdown.Item>
             </DropdownButton>
           </Form>

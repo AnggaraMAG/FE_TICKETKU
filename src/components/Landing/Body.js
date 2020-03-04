@@ -1,23 +1,12 @@
 import React, { Component } from "react";
-import {
-  Form,
-  Col,
-  Card,
-  Row,
-  Table,
-  Button,
-  Container
-} from "react-bootstrap";
+import { Form, Col, Card, Row, Table, Button } from "react-bootstrap";
 
 export default class Body extends Component {
   render() {
     return (
-      <Container style={{ width: "60%" }}>
-        <Card
-          className="shadow align-items-center"
-          style={{ bottom: 50, height: 250 }}
-        >
-          <Form className="mt-4">
+      <div className="container" style={{ marginTop: -50 }}>
+        <Card className="shadow" style={{ padding: 20 }}>
+          <Form>
             <Row>
               <Col sm={2}>
                 <h4>Ticket</h4>
@@ -29,10 +18,17 @@ export default class Body extends Component {
                     <strong>Asal</strong>
                   </Form.Label>
                   <Form.Control type="text" value="Medan" />
-                  <Form.Label className="mt-3">
-                    <strong>Tanggal Berangkat</strong>
-                  </Form.Label>
-                  <Form.Control type="date" />
+                  <Row>
+                    <Col xs={6}>
+                      <Form.Label className="mt-3">
+                        <strong>Tanggal Berangkat</strong>
+                      </Form.Label>
+                      <Form.Control type="date" />
+                    </Col>
+                    <Col xs={6} className="mt-3">
+                      <Form.Check type="checkbox" label="Pulang Pergi" />
+                    </Col>
+                  </Row>
                 </Table>
               </Col>
               <Col sm={2}>
@@ -55,14 +51,45 @@ export default class Body extends Component {
                     <strong>Tujuan</strong>
                   </Form.Label>
                   <Form.Control type="text" value="Jakarta" />
-                  <Form.Label className="mt-3">Dewasa</Form.Label>
-                  <Form.Control type="date" />
+                  <Row className="mt-4">
+                    <Col xs={4}>
+                      <Form.Group>
+                        <Form.Label>
+                          <strong>Dewasa</strong>
+                        </Form.Label>
+                        <Form.Control as="select">
+                          <option>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col xs={4}>
+                      <Form.Group>
+                        <Form.Label>
+                          <strong>Bayi</strong>
+                        </Form.Label>
+                        <Form.Control as="select">
+                          <option>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col xs={4} className="mt-4">
+                      <Button size="sm" variant="danger">
+                        Cari Ticket
+                      </Button>
+                    </Col>
+                  </Row>
                 </Table>
               </Col>
             </Row>
           </Form>
         </Card>
-      </Container>
+      </div>
     );
   }
 }

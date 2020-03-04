@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Container } from "react-bootstrap";
+import Edit from "./Admin/../Modal/Edit";
+import Detail from "../Admin/Modal/Detail";
 
 export default class Transaksi extends Component {
   render() {
     return (
-      <div>
+      <Container className="mt-4">
         <Table striped hover>
           <thead>
-            <h4>List Transaksi</h4>
+            <h2>List Transaksi</h2>
             <tr>
               <th>No</th>
               <th>User</th>
@@ -25,27 +27,23 @@ export default class Transaksi extends Component {
               <td>baca.jpg</td>
               <td>Pending</td>
               <td>
-                <Button variant="info" size="sm">
+                {/* <Button variant="info" size="sm">
                   Detail
-                </Button>{" "}
-                <Button variant="warning" size="sm">
-                  Edit
-                </Button>{" "}
+                </Button>{" "} */}
+                <Edit /> <Detail />{" "}
                 <Button variant="danger" size="sm">
                   Delete
                 </Button>{" "}
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>2</td>
               <td>Mark</td>
               <td>Surabaya-Jakarta</td>
               <td>baca.jpg</td>
               <td>Pending</td>
               <td>
-                <Button variant="info" size="sm">
-                  Detail
-                </Button>{" "}
+                <Edit/>
                 <Button variant="warning" size="sm">
                   Edit
                 </Button>{" "}
@@ -71,10 +69,10 @@ export default class Transaksi extends Component {
                   Delete
                 </Button>{" "}
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </Table>
-      </div>
+      </Container>
     );
   }
 }
