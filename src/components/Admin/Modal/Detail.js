@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import qrcode from "../../images/qrcode.jpg";
 
 class Edit extends Component {
   constructor(props) {
@@ -27,24 +28,38 @@ class Edit extends Component {
           Detail
         </Button>
         <Modal show={this.state.login} onHide={this.closeModal}>
-          <Modal.Header>
+          {/* <Modal.Header>
             <Modal.Title>
               <strong>INVOICE</strong>
+              <p style={{ size: 10 }}>Kode Invoice :NGA72626</p>
             </Modal.Title>
-          </Modal.Header>
+          </Modal.Header> */}
           <Modal.Body>
-            <Form.Group>
-              <Form.Control type="text" placeholder="1" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control type="text" placeholder="Anto" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control type="text" placeholder="Surabaya-Jakarta" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control type="text" placeholder="bni.jpg" />
-            </Form.Group>
+            <div>
+              <h2>
+                <strong>INVOICE</strong>
+              </h2>
+              <p style={{ size: 10 }}>Kode Invoice :NGA72626</p>
+            </div>
+            <Row>
+              <Col sm={8}>
+                <Row>
+                  <Col xs={6}>
+                    <Row>
+                      <h3>Kereta Api</h3>
+                      <p>Saturday ,21 Februari 2020</p>
+                    </Row>
+                  </Col>
+                  <Col xs={6}>
+                    <img style={{ width: 50 }} src={qrcode}></img>
+                    <p>TI8737</p>
+                  </Col>
+                </Row>
+              </Col>
+              <Col>
+                <p>upload payment proof</p>
+              </Col>
+            </Row>
           </Modal.Body>
           <Modal.Footer>
             <Row>

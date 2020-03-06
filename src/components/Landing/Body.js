@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Col, Card, Row, Table, Button } from "react-bootstrap";
+import bullet from "../images/repeat.png";
 
 export default class Body extends Component {
   render() {
@@ -26,23 +27,27 @@ export default class Body extends Component {
                       <Form.Control type="date" />
                     </Col>
                     <Col xs={6} className="mt-3">
-                      <Form.Check type="checkbox" label="Pulang Pergi" />
+                      <Form.Check
+                        type="switch"
+                        id="custom-switch"
+                        label="Pulang Pergi"
+                      />
                     </Col>
                   </Row>
                 </Table>
               </Col>
               <Col sm={2}>
                 <Button
-                  variant="danger"
+                  variant=""
                   style={{
                     marginTop: "65px",
                     marginLeft: "20px",
-                    borderRadius: "100px",
-                    width: "40px",
-                    height: "40"
+                    borderRadius: "500px"
+                    // width: "40px",
+                    // height: "40",
                   }}
                 >
-                  S
+                  <img style={{ width: 30 }} src={bullet} alt="arrow"></img>
                 </Button>
               </Col>
               <Col sm={4}>

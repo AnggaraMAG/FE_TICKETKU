@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Usernav from "../Landing/Navbar";
 import { Container, Row, Col, Card, Table, Button } from "react-bootstrap";
 import "./CSS/Ticketsaya.css";
-import { Link } from "react-router-dom";
+import qrcode from "../images/qrcode.jpg";
 
 export default class Ticketsaya extends Component {
   render() {
@@ -22,7 +22,7 @@ export default class Ticketsaya extends Component {
                       <strong>Agro Wilis</strong>
                     </h4>
                     <p>Eksekutif (H)</p>
-                    <h6 style={{ color: "red" }}>Pending</h6>
+                    <h6 style={{ color: "green" }}>Approve</h6>
                   </Col>
                   <Col xs={4} className="colorT">
                     <h6>
@@ -51,6 +51,13 @@ export default class Ticketsaya extends Component {
                 <h6 className="satur">
                   <b>Saturday</b> ,21 February 2020
                 </h6>
+                <br />
+                <h5>
+                  <img style={{ width: 150 }} src={qrcode} alt="img"></img>
+                  <h6 style={{ marginLeft: 40 }}>
+                    <b>TI8383748</b>
+                  </h6>
+                </h5>
               </Col>
             </Row>
             <Row>
@@ -75,9 +82,7 @@ export default class Ticketsaya extends Component {
                 </Table>
               </Col>
               <Col className="mt-5">
-              <Link to="/invoice"><Button variant="danger">
-                  Bayar Sekarang
-                </Button></Link>
+                <Button variant="danger">Bayar Sekarang</Button>
               </Col>
             </Row>
           </Card>

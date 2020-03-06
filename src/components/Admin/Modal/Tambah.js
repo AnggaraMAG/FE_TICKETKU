@@ -1,12 +1,29 @@
 import React, { Component } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import { connect } from "react-redux";
+import { postTrain } from "../../../_actions/trains";
+import { getTypes } from "../../../_actions/types";
 
-export default class Register extends Component {
+class Tambah extends Component {
+  componentDidMount() {
+    this.props.getTypes();
+    
+  }
   constructor(props) {
     super(props);
     this.state = {
-      register: false
+      register: false,
+      nameTrain: null,
+      type_id: null,
+      dateStart: null,
+      stationStart: null,
+      timeStart: null,
+      destinationStation: null,
+      timeArrival: null,
+      price: null,
+      qty: null
     };
+    // this.handleTambah = this.handleTambah.bind(this);
   }
   openModal = () => {
     this.setState({
@@ -18,7 +35,33 @@ export default class Register extends Component {
       login: false
     });
   };
+
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+    console.log(e.target.value);
+  };
+
+  handleTambah = e => {
+    e.preventDefault();
+    const data = {
+      nameTrain: this.state.nameTrain,
+      type_id: this.state.type_id,
+      dateStart: this.state.dateStart,
+      stationStart: this.state.stationStart,
+      timeStart: this.state.timeStart,
+      destinationStation: this.state.destinationStation,
+      timeArrival: this.state.timeArrival,
+      price: this.state.price,
+      qty: this.state.qty
+    };
+    this.props.postTrain(data);
+    console.log(data);
+  };
   render() {
+    const { data } = this.props.types;
     return (
       <>
         <Button variant="warning" size="sm" onClick={this.openModal}>
@@ -33,22 +76,41 @@ export default class Register extends Component {
           <Modal.Body>
             <Form.Group>
               <Form.Label>Nama Kereta</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                type="text"
+                onChange={this.handleChange}
+                name="nameTrain"
+              />
             </Form.Group>
             <Form.Group>
-              <Form.Control as="select">
+              <Form.Control
+                as="select"
+                value={this.state.types}
+                onChange={this.handleChange}
+                name="type_id"
+              >
                 <option>Jenis Kereta</option>
-                <option value="executive">Executive</option>
-                <option value="business">Business</option>
-                <option value="ekonomi">Ekonomi</option>
+                {data.map((item, index) => (
+                  <option key={index} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
               </Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>Tanggal Keberangkatan</Form.Label>
-              <Form.Control type="date" />
+              <Form.Control
+                type="date"
+                onChange={this.handleChange}
+                name="dateStart"
+              />
             </Form.Group>
             <Form.Group>
-              <Form.Control as="select">
+              <Form.Control
+                as="select"
+                onChange={this.handleChange}
+                name="stationStart"
+              >
                 <option>Pilih Stasiun Keberangkatan</option>
                 <option value="manggarai">Manggarai</option>
                 <option value="wuhan">Wuhan</option>
@@ -57,10 +119,18 @@ export default class Register extends Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Jam Keberangkatan</Form.Label>
-              <Form.Control type="time" />
+              <Form.Control
+                type="time"
+                onChange={this.handleChange}
+                name="timeStart"
+              />
             </Form.Group>
             <Form.Group>
-              <Form.Control as="select">
+              <Form.Control
+                as="select"
+                onChange={this.handleChange}
+                name="destinationStation"
+              >
                 <option>Pilih Stasiun Tujuan</option>
                 <option value="medan">Medan</option>
                 <option value="depok">Depok</option>
@@ -69,20 +139,32 @@ export default class Register extends Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Jam Tiba</Form.Label>
-              <Form.Control type="time" />
+              <Form.Control
+                type="time"
+                onChange={this.handleChange}
+                name="timeArrival"
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Harga Ticket</Form.Label>
-              <Form.Control type="number" />
+              <Form.Control
+                type="number"
+                onChange={this.handleChange}
+                name="price"
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Qty</Form.Label>
-              <Form.Control type="number" />
+              <Form.Control
+                type="number"
+                onChange={this.handleChange}
+                name="qty"
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             {/* <Button onClick={this.closeModal}>Close</Button> */}
-            <Button size="sm">
+            <Button size="sm" onClick={this.handleTambah}>
               <strong>Tambah</strong>
             </Button>
           </Modal.Footer>
@@ -91,3 +173,17 @@ export default class Register extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    train: state.trains,
+    types: state.types
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    postTrain: data => dispatch(postTrain(data)),
+    getTypes: () => dispatch(getTypes())
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Tambah);

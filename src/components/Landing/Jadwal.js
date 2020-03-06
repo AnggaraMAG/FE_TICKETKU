@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import { connect } from "react-redux";
+import { getTrains } from "../../_actions/trains";
 
-export default class Jadwal extends Component {
+class Jadwal extends Component {
+  componentDidMount() {
+    this.props.getTrains();
+  }
   render() {
     return (
       <div className="container mt-5">
@@ -12,7 +17,7 @@ export default class Jadwal extends Component {
               <th>Berangkat</th>
               <th>Tiba</th>
               <th>Durasi</th>
-              <th>Harga Perorang</th>
+              <th>Harga PerOrang</th>
             </tr>
           </thead>
           <tbody>
@@ -23,16 +28,20 @@ export default class Jadwal extends Component {
               <td>2 Jam</td>
               <td style={{ color: "red" }}>Rp.100</td>
             </tr>
-            <tr>
-              <td>Jacob</td>
-              <td>05:00</td>
-              <td>10:00</td>
-              <td>5 Jam</td>
-              <td style={{ color: "red" }}>Rp.150</td>
-            </tr>
           </tbody>
         </Table>
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    trains: state.trains,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    getTrains: () => dispatch(getTrains())
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Jadwal);

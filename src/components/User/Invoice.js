@@ -3,6 +3,8 @@ import { Col, Row, Container, Card, Table, Button } from "react-bootstrap";
 import Navabar from "../Landing/Navbar";
 import Footer from "../Landing/Footer";
 import "./CSS/Invoice.css";
+import qrcode from "../images/qrcode.jpg";
+import { Link } from "react-router-dom";
 
 export default class Invoice extends Component {
   render() {
@@ -61,9 +63,11 @@ export default class Invoice extends Component {
                       </td>
                     </tr>
                   </Table>
-                  <Button variant="info" className="mb-5 mt-3">
-                    Bayar Sekarang
-                  </Button>
+                  <Link to="/approve">
+                    <Button variant="info" className="mb-5 mt-3">
+                      Bayar Sekarang
+                    </Button>
+                  </Link>
                 </Col>
                 <Col>FOTO OI</Col>
               </Row>
@@ -71,13 +75,16 @@ export default class Invoice extends Component {
             <Col>
               <div style={{ marginLeft: 10 }}>
                 <Row className="keretabg">
-                  <Col sm={9} className="tengah">
+                  <Col sm={9} className="tengah text">
                     <h2>
                       <strong>Kereta Api</strong>
                     </h2>
                     <p>Saturday ,21 Februari 2020</p>
                   </Col>
-                  <Col>QR CODE</Col>
+                  <Col className="mb-3 text-center">
+                    <img style={{ width: 130 }} src={qrcode} alt="img"></img>
+                    <h5 style={{ color: "black" }}>TU48477</h5>
+                  </Col>
                 </Row>
                 <Row className="bgtable tengah">
                   <h5 style={{ textAlign: "center" }}>Argo Wilis</h5>

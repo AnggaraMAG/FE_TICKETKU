@@ -9,7 +9,7 @@ export default class AdminNav extends Component {
       <div>
         <Navbar className="background" expand="lg">
           <Navbar.Brand>
-            <strong className="colorBrand">Ticket Cuks</strong>
+            <strong className="colorBrand">TicketKu</strong>
           </Navbar.Brand>
           <Nav className="mr-auto"></Nav>
           <Form inline style={{ marginRight: 80 }}>
