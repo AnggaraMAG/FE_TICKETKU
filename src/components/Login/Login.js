@@ -68,6 +68,7 @@ class Login extends Component {
                   type="email"
                   placeholder="Email"
                   name="email"
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -76,6 +77,7 @@ class Login extends Component {
                   type="password"
                   placeholder="Password"
                   name="password"
+                  required
                 />
               </Form.Group>
             </Modal.Body>

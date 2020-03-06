@@ -3,7 +3,26 @@ import { Form, Col, Card, Row, Table, Button } from "react-bootstrap";
 import bullet from "../images/repeat.png";
 
 export default class Body extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value1: "",
+      value2: ""
+    };
+  }
+  handlechange1 = e => {
+    this.setState({ value1: e.target.value });
+  };
+  handlechange2 = e => {
+    this.setState({ value2: e.target.value });
+  };
+
+  handleclick = () => {
+    this.setState({ value2: this.state.value1 });
+    this.setState({ value1: this.state.value2 });
+  };
   render() {
+    const { value1, value2 } = this.state;
     return (
       <div className="container" style={{ marginTop: -50 }}>
         <Card className="shadow" style={{ padding: 20 }}>
@@ -18,7 +37,11 @@ export default class Body extends Component {
                   <Form.Label>
                     <strong>Asal</strong>
                   </Form.Label>
-                  <Form.Control type="text" value="Medan" />
+                  <Form.Control
+                    type="text"
+                    value={value2}
+                    onChange={this.handlechange2}
+                  />
                   <Row>
                     <Col xs={6}>
                       <Form.Label className="mt-3">
@@ -38,6 +61,7 @@ export default class Body extends Component {
               </Col>
               <Col sm={2}>
                 <Button
+                  onClick={this.handleclick}
                   variant=""
                   style={{
                     marginTop: "65px",
@@ -55,7 +79,11 @@ export default class Body extends Component {
                   <Form.Label>
                     <strong>Tujuan</strong>
                   </Form.Label>
-                  <Form.Control type="text" value="Jakarta" />
+                  <Form.Control
+                    type="text"
+                    value={value1}
+                    onChange={this.handlechange1}
+                  />
                   <Row className="mt-4">
                     <Col xs={4}>
                       <Form.Group>

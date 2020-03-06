@@ -7,7 +7,6 @@ import { getTypes } from "../../../_actions/types";
 class Tambah extends Component {
   componentDidMount() {
     this.props.getTypes();
-    
   }
   constructor(props) {
     super(props);
@@ -58,7 +57,8 @@ class Tambah extends Component {
       qty: this.state.qty
     };
     this.props.postTrain(data);
-    console.log(data);
+    window.location.reload(false);
+    // console.log(data);
   };
   render() {
     const { data } = this.props.types;
@@ -112,9 +112,13 @@ class Tambah extends Component {
                 name="stationStart"
               >
                 <option>Pilih Stasiun Keberangkatan</option>
-                <option value="manggarai">Manggarai</option>
-                <option value="wuhan">Wuhan</option>
-                <option value="tokyo">tokyo</option>
+                <option value="Manggarai">Manggarai</option>
+                <option value="Wuhan">Wuhan</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="China">China</option>
+                <option value="Afrika">Afrika</option>
+                <option value="Zimbwabe">Zimbwabe</option>
+                <option value="Namex">Namex</option>
               </Form.Control>
             </Form.Group>
             <Form.Group>
@@ -132,9 +136,12 @@ class Tambah extends Component {
                 name="destinationStation"
               >
                 <option>Pilih Stasiun Tujuan</option>
-                <option value="medan">Medan</option>
-                <option value="depok">Depok</option>
-                <option value="singapur">Singapur</option>
+                <option value="Medan">Medan</option>
+                <option value="Depok">Depok</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Makassar">Makassar</option>
+                <option value="India">India</option>
+                <option value="Malaysia">Malaysia</option>
               </Form.Control>
             </Form.Group>
             <Form.Group>

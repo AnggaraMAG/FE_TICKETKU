@@ -12,7 +12,7 @@ export default class Header extends Component {
           <Container>
             <Row style={{ color: "white" }}>
               <Col className="fluid">
-                <h1>Selamat Pagi,Ticket Seekers</h1>
+                <h1>Selamat Pagi, Ticket Seekers</h1>
                 <p>
                   Ingin Pulang Dengan Ticket Murah?
                   <br />

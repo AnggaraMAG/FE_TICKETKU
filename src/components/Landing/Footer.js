@@ -6,7 +6,7 @@ export default class Footer extends Component {
     return (
       <div className="background">
         <p className="text-center">© TicketKu 2010 - 2020</p>
-      </div>
+      </div>  
     );
   }
 }

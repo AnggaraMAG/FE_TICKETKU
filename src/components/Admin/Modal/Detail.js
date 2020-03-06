@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Button, Modal, Row, Col } from "react-bootstrap";
 import qrcode from "../../images/qrcode.jpg";
 
 class Edit extends Component {
@@ -51,7 +51,7 @@ class Edit extends Component {
                     </Row>
                   </Col>
                   <Col xs={6}>
-                    <img style={{ width: 50 }} src={qrcode}></img>
+                    <img style={{ width: 50 }} src={qrcode} alt="img"></img>
                     <p>TI8737</p>
                   </Col>
                 </Row>
