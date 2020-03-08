@@ -44,11 +44,11 @@ class Jadwal extends Component {
                 </td>
                 <td>
                   <h6>{item.timeStart}</h6>
-                  <p>{item.stationStart}</p>
+                  <p>{item.station1}</p>
                 </td>
                 <td>
                   <h6>{item.timeArrival}</h6>
-                  <p>{item.destinationStation}</p>
+                  <p>{item.station2}</p>
                 </td>
                 <td>{getDuration(item.timeStart, item.timeArrival)}</td>
                 <td style={{ color: "red" }}>{toRupiah(item.price)}</td>

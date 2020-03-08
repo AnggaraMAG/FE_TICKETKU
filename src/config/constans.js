@@ -7,3 +7,4 @@ export const POST_TRAIN = "POST_TRAIN";
 export const GET_TYPES = "GET_TYPES";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER = "GET_ORDER";
+export const GET_MYTICKET = "GET_MYTICKET";

@@ -19,6 +19,8 @@ class Tambah extends Component {
       timeStart: null,
       destinationStation: null,
       timeArrival: null,
+      station1: null,
+      station2: null,
       price: null,
       qty: null
     };
@@ -53,12 +55,13 @@ class Tambah extends Component {
       timeStart: this.state.timeStart,
       destinationStation: this.state.destinationStation,
       timeArrival: this.state.timeArrival,
+      station1: this.state.station1,
+      station2: this.state.station2,
       price: this.state.price,
       qty: this.state.qty
     };
     this.props.postTrain(data);
     window.location.reload(false);
-    // console.log(data);
   };
   render() {
     const { data } = this.props.types;
@@ -167,6 +170,38 @@ class Tambah extends Component {
                 onChange={this.handleChange}
                 name="qty"
               />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                as="select"
+                onChange={this.handleChange}
+                name="station1"
+              >
+                <option>Pilih Nama Station Awal</option>
+                <option value="Wadidaw (WDD)">Wadidaw (WDD)</option>
+                <option value="Meleleh (MLL)">Meleleh (MLL)</option>
+                <option value="Kou (KU)">Kou (KU)</option>
+                <option value="CIAO (CIO)">CIAO (CIO)</option>
+                <option value="Alala (ALL)">Alala (ALL)</option>
+                <option value="Zoro (ZR)">Zoro (ZR)</option>
+                <option value="NO (N)">NO (N)</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                as="select"
+                onChange={this.handleChange}
+                name="station2"
+              >
+                <option>Pilih Nama Station Akhir</option>
+                <option value="Wadidaw (WDD)">Wadidaw (WDD)</option>
+                <option value="Meleleh (MLL)">Meleleh (MLL)</option>
+                <option value="Kou (KU)">Kou (KU)</option>
+                <option value="CIAO (CIO)">CIAO (CIO)</option>
+                <option value="Alala (ALL)">Alala (ALL)</option>
+                <option value="Zoro (ZR)">Zoro (ZR)</option>
+                <option value="NO (N)">NO (N)</option>
+              </Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

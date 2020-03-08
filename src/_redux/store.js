@@ -4,6 +4,7 @@ import trains from "../_reducers/trains";
 import user from "../_reducers/user";
 import types from "../_reducers/types";
 import orders from "../_reducers/order";
+import myticket from "../_reducers/myticket";
 
 import { logger, promise } from "../middleware";
 
@@ -12,7 +13,8 @@ const rootReducers = combineReducers({
   trains,
   user,
   types,
-  orders
+  orders,
+  myticket
 });
 
 const store = createStore(rootReducers, applyMiddleware(logger, promise));

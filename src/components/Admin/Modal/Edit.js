@@ -26,10 +26,10 @@ class Edit extends Component {
   };
   handleEdit = () => {
     const id = this.props.idorderx;
-    this.props.getOrderid(id)
+    this.props.getOrderid(id);
   };
   render() {
-    const { data } = this.props.idorder;
+    // const { data } = this.props.idorder;
 
     return (
       <>
@@ -65,7 +65,6 @@ class Edit extends Component {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            {/* <Button onClick={this.closeModal}>Close</Button> */}
             <Button size="sm">Edit</Button>
           </Modal.Footer>
         </Modal>
@@ -80,7 +79,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getOrderid: (id) => dispatch(getOrderid(id))
+    getOrderid: id => dispatch(getOrderid(id))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Edit);

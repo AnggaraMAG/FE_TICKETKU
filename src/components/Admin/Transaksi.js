@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
-// import Edit from "./Admin/../Modal/Edit";
+import Edit from "./Admin/../Modal/Edit";
 import Detail from "../Admin/Modal/Detail";
 import { connect } from "react-redux";
 import { getOrders } from "../../_actions/order";
@@ -26,7 +26,7 @@ class Transaksi extends Component {
           </thead>
           <tbody>
             {data.map((item, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item.user.name}</td>
                 <td>
@@ -36,8 +36,7 @@ class Transaksi extends Component {
                 <td>{item.attachment}</td>
                 <td>{item.status}</td>
                 <td>
-                  {/* <Edit idorderx={item.id} />  */}
-                  <Detail />{" "}
+                  <Edit /> <Detail />{" "}
                   <Button variant="danger" size="sm">
                     Delete
                   </Button>{" "}
