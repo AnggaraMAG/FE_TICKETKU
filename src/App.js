@@ -5,7 +5,6 @@ import Landing from "./components/Landing/Landing";
 import Admin from "./components/Admin/Admin";
 import Invoice from "./components/User/Invoice";
 import Ticketku from "./components/User/Ticketsaya";
-import Ticketaprov from "./components/User/Ticketaprove";
 
 export default class App extends Component {
   render() {
@@ -22,9 +21,6 @@ export default class App extends Component {
         </Route>
         <Route path="/ticketku">
           <Ticketku />
-        </Route>
-        <Route path="/approve">
-          <Ticketaprov />
         </Route>
       </Router>
     );

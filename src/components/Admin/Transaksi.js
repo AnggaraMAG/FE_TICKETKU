@@ -36,7 +36,7 @@ class Transaksi extends Component {
                 <td>{item.attachment}</td>
                 <td>{item.status}</td>
                 <td>
-                  <Edit /> <Detail />{" "}
+                  <Edit data={item} /> <Detail data={item} />{" "}
                   <Button variant="danger" size="sm">
                     Delete
                   </Button>{" "}

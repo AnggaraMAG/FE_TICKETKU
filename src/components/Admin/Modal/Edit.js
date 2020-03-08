@@ -29,8 +29,6 @@ class Edit extends Component {
     this.props.getOrderid(id);
   };
   render() {
-    // const { data } = this.props.idorder;
-
     return (
       <>
         <Button variant="info" size="sm" onClick={this.openModal}>
@@ -44,23 +42,18 @@ class Edit extends Component {
           </Modal.Header>
           <Modal.Body>
             <Form.Group>
-              <Form.Control type="text" placeholder="1" />
+              <Form.Control value={this.props.data.id} readOnly />
             </Form.Group>
             <Form.Group>
-              <Form.Control type="text" placeholder="Anto" />
+              <Form.Control value={this.props.data.user.name} readOnly />
             </Form.Group>
             <Form.Group>
-              <Form.Control type="text" placeholder="Surabaya-Jakarta" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control type="text" placeholder="bni.jpg" />
+              <Form.Control value={this.props.data.attachment} readOnly />
             </Form.Group>
             <Form.Group>
               <Form.Control as="select">
-                <option>Status</option>
                 <option value="approved">Approved</option>
                 <option value="pending">Pending</option>
-                <option value="cancel">Cancel</option>
               </Form.Control>
             </Form.Group>
           </Modal.Body>

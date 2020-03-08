@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, Row, Col } from "react-bootstrap";
+import { Button, Modal, Row, Col, Table } from "react-bootstrap";
 import qrcode from "../../images/qrcode.jpg";
 
 class Edit extends Component {
@@ -28,12 +28,6 @@ class Edit extends Component {
           Detail
         </Button>
         <Modal show={this.state.login} onHide={this.closeModal}>
-          {/* <Modal.Header>
-            <Modal.Title>
-              <strong>INVOICE</strong>
-              <p style={{ size: 10 }}>Kode Invoice :NGA72626</p>
-            </Modal.Title>
-          </Modal.Header> */}
           <Modal.Body>
             <div>
               <h2>
@@ -42,7 +36,7 @@ class Edit extends Component {
               <p style={{ size: 10 }}>Kode Invoice :NGA72626</p>
             </div>
             <Row>
-              <Col sm={8}>
+              <Col sm={9} style={{ marginLeft: 10 }}>
                 <Row>
                   <Col xs={6}>
                     <Row>
@@ -55,6 +49,59 @@ class Edit extends Component {
                     <p>TI8737</p>
                   </Col>
                 </Row>
+                <h5>{this.props.data.train.nameTrain}</h5>
+                <p>Eksekutif</p>
+                <Row>
+                  <Col xs={6}>
+                    <h6>{this.props.data.train.timeStart}</h6>
+                    <p>{this.props.data.train.dateStart}</p>
+                  </Col>
+                  <Col xs={6}>
+                    <h6>{this.props.data.train.station1}</h6>
+                    <p>{this.props.data.train.stationStart}</p>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={6}>
+                    <h6>{this.props.data.train.timeArrival}</h6>
+                    <p>{this.props.data.train.dateStart}</p>
+                  </Col>
+                  <Col xs={6}>
+                    <h6>{this.props.data.train.station2}</h6>
+                    <p>{this.props.data.train.destinationStation}</p>
+                  </Col>
+                </Row>
+                <hr />
+                <Row>
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <th>No.tanda Pengenal</th>
+                        <th>Nama Pemesanan</th>
+                        <th>No Handphone</th>
+                        <th>Email</th>
+                      </tr>
+                      <br />
+                      <tr>
+                        <td>{this.props.data.user.idcard}</td>
+                        <td>{this.props.data.user.name}</td>
+                        <td>{this.props.data.user.phone}</td>
+                        <td>{this.props.data.user.email}</td>
+                      </tr>
+                      <tr>
+                        <td style={{ color: "red" }}>
+                          <b>TOTAL :</b>{" "}
+                        </td>
+                        <td>
+                          <tr>
+                            <b>Rp.</b>
+                            <b>{this.props.data.totalprice}</b>
+                          </tr>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </Row>
               </Col>
               <Col>
                 <p>upload payment proof</p>
@@ -62,18 +109,18 @@ class Edit extends Component {
             </Row>
           </Modal.Body>
           <Modal.Footer>
-            <Row>
-              <Col sm={4}>
+            {/* <Row>
+              <Col sm={3}>
                 <h3>
                   <strong>Total:</strong>
                 </h3>
               </Col>
-              <Col sm={8}>
-                <h4 style={{ color: "red" }}>Rp.89383877334</h4>
+              <Col>
+                <h4 style={{ color: "red" }}>
+                  Rp.{this.props.data.totalprice}
+                </h4>
               </Col>
-            </Row>
-            {/* <Button onClick={this.closeModal}>Close</Button> */}
-            {/* <Button size="sm">Edit</Button> */}
+            </Row> */}
           </Modal.Footer>
         </Modal>
       </>

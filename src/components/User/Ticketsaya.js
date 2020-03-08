@@ -29,7 +29,29 @@ class Ticketsaya extends Component {
                         <strong>{item.train.nameTrain}</strong>
                       </h4>
                       <p>{item.train.type.name}</p>
-                      <h6 style={{ color: "green" }}>{item.status}</h6>
+                      {item.status === "approved" ? (
+                        <h6
+                          style={{
+                            color: "white",
+                            backgroundColor: "green",
+                            width: 80,
+                            borderRadius: 5
+                          }}
+                        >
+                          {item.status}
+                        </h6>
+                      ) : (
+                        <h6
+                          style={{
+                            color: "white",
+                            backgroundColor: "red",
+                            width: 80,
+                            borderRadius: 5
+                          }}
+                        >
+                          {item.status}
+                        </h6>
+                      )}
                     </Col>
                     <Col xs={4} className="colorT">
                       <h6>

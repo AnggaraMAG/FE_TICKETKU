@@ -1,10 +1,18 @@
 import React, { Component } from "react";
-import { Col, Row, Container, Card, Table, Button } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Container,
+  Card,
+  Table,
+  Button,
+  Form
+} from "react-bootstrap";
 import Navabar from "../Landing/Navbar";
 import Footer from "../Landing/Footer";
 import "./CSS/Invoice.css";
 import qrcode from "../images/qrcode.jpg";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getMyticket } from "../../_actions/myticket";
 
@@ -12,14 +20,21 @@ class Invoice extends Component {
   componentDidMount() {
     this.props.getMyticket();
   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      file: null,
+      preview: null
+    };
+  }
   render() {
     const { data } = this.props.myticket;
+
     return (
       <div>
         <Navabar />
         <Container>
           {data.map((item, index) => (
-            //
             <Row className="mt-4" key={index}>
               <Col sm={8}>
                 <h1>
@@ -45,7 +60,7 @@ class Invoice extends Component {
                       <th>Email</th>
                     </tr>
                     <tr className="warnaabu">
-                      <td>{item.user.username}</td>
+                      <td>{item.user.idcard}</td>
                       <td>{item.user.name}</td>
                       <td>{item.user.phone}</td>
                       <td>{item.user.email}</td>
@@ -53,31 +68,60 @@ class Invoice extends Component {
                   </Table>
                 </Row>
                 <Row style={{ marginTop: 60 }}>
-                  <Col sm={8}>
+                  <Col sm={6}>
                     <h3>Rincian Harga</h3>
                     <Table bordered>
                       <tr>
-                        <td>
-                          {item.train.nameTrain} <span>(Dewasa)x 1</span>
-                        </td>
-                        <td>Rp. 250.000</td>
+                        <th>{item.train.nameTrain}</th>
+                        <th>Harga</th>
                       </tr>
+                      <tbody>
+                        <td>
+                          <tr>( Dewasa ) x {item.qty}</tr>
+                          <tr>( Bayi ) x {item.qtybaby}</tr>
+                        </td>
+                        <td>
+                          <tr>Rp. {item.adultprice}</tr>
+                          <tr>Rp. {item.babyprice}</tr>
+                        </td>
+                      </tbody>
                       <tr className="bgtotal">
                         <td>
                           <strong>Total</strong>
                         </td>
                         <td>
-                          <strong>Rp. 250.000</strong>
+                          <strong>Rp.{item.totalprice}</strong>
                         </td>
                       </tr>
                     </Table>
-                    <Link to="/approve">
-                      <Button variant="info" className="mb-5 mt-3">
-                        Bayar Sekarang
-                      </Button>
-                    </Link>
+                    <Button variant="info" className="mb-5 mt-3">
+                      Bayar Sekarang
+                    </Button>
                   </Col>
-                  <Col>FOTO OI</Col>
+                  <Row>
+                    <Col>
+                      <img
+                        src={this.state.preview}
+                        style={{ width: 200 }}
+                      ></img>
+                      <Form enctype="multipart/form-data">
+                        <input
+                          className="invoice-choose-file"
+                          accept="image/*"
+                          id="contained-button-file"
+                          multiple
+                          type="file"
+                          name="attachment"
+                          onChange={e => {
+                            this.setState({
+                              preview: URL.createObjectURL(e.target.files[0]),
+                              file: e.target.files[0]
+                            });
+                          }}
+                        />
+                      </Form>
+                    </Col>
+                  </Row>
                 </Row>
               </Col>
               <Col>
@@ -98,25 +142,24 @@ class Invoice extends Component {
                     <h5 style={{ textAlign: "center" }}>
                       {item.train.nameTrain}
                     </h5>
-                    {/* <span>Eksekutif (H)</span> */}
                     <Table className="garisilang">
                       <h5 style={{ color: "red" }}>Stasiun</h5>
                       <tr>
                         <th>{item.train.timeStart}</th>
-                        <th>{item.train.stationStart}</th>
+                        <th>{item.train.station1}</th>
                       </tr>
                       <tr>
                         <td>{item.train.dateStart}</td>
-                        <td>Depok</td>
+                        <td>{item.train.stationStart}</td>
                       </tr>
                       <h5 style={{ color: "red" }}>Tujuan</h5>
                       <tr>
                         <th>{item.train.timeArrival}</th>
-                        <th>{item.train.destinationStation}</th>
+                        <th>{item.train.station2}</th>
                       </tr>
                       <tr>
                         <td>{item.train.dateStart}</td>
-                        <td>Wuhan</td>
+                        <td>{item.train.destinationStation}</td>
                       </tr>
                     </Table>
                   </Row>
@@ -124,7 +167,6 @@ class Invoice extends Component {
               </Col>
             </Row>
           ))}
-          ;
         </Container>
         <Footer />
       </div>
