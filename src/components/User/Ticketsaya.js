@@ -3,6 +3,7 @@ import Usernav from "../Landing/Navbar";
 import { Container, Row, Col, Card, Table, Button } from "react-bootstrap";
 import "./CSS/Ticketsaya.css";
 import { Link } from "react-router-dom";
+// import { connect } from "react-redux";
 
 export default class Ticketsaya extends Component {
   render() {
@@ -75,9 +76,9 @@ export default class Ticketsaya extends Component {
                 </Table>
               </Col>
               <Col className="mt-5">
-              <Link to="/invoice"><Button variant="danger">
-                  Bayar Sekarang
-                </Button></Link>
+                <Link to="/invoice">
+                  <Button variant="danger">Bayar Sekarang</Button>
+                </Link>
               </Col>
             </Row>
           </Card>

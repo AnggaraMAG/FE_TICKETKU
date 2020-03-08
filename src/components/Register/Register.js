@@ -14,10 +14,10 @@ class Register extends Component {
       password: null,
       gender: null,
       phone: null,
-      address: null
+      address: null,
+      validate: false
     };
   }
-
   openModal = () => {
     this.setState({
       login: true
@@ -72,14 +72,19 @@ class Register extends Component {
             <Modal.Body>
               <Form.Group>
                 <Form.Control
+                  required
                   onChange={this.handleChange}
                   type="text"
                   placeholder="Nama Lengkap"
                   name="name"
                 />
+                <Form.Control.Feedback type="invalid">
+              Please choose a username.
+            </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Control
+                  required
                   onChange={this.handleChange}
                   type="text"
                   placeholder="Username"
@@ -88,6 +93,7 @@ class Register extends Component {
               </Form.Group>
               <Form.Group>
                 <Form.Control
+                  required
                   onChange={this.handleChange}
                   type="email"
                   placeholder="Email"
@@ -96,6 +102,7 @@ class Register extends Component {
               </Form.Group>
               <Form.Group>
                 <Form.Control
+                  required
                   onChange={this.handleChange}
                   type="password"
                   placeholder="Password"
@@ -104,6 +111,7 @@ class Register extends Component {
               </Form.Group>
               <Form.Group>
                 <Form.Control
+                  required
                   onChange={this.handleChange}
                   as="select"
                   name="gender"
@@ -115,6 +123,7 @@ class Register extends Component {
               </Form.Group>
               <Form.Group>
                 <Form.Control
+                  required
                   onChange={this.handleChange}
                   type="number"
                   placeholder="Phone"
@@ -123,15 +132,18 @@ class Register extends Component {
               </Form.Group>
               <Form.Group>
                 <Form.Control
+                  required
                   onChange={this.handleChange}
                   type="text"
                   placeholder="Address"
                   name="address"
                 />
+                <Form.Control.Feedback type="invalid">
+                  Please choose a username.
+                </Form.Control.Feedback>
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-              {/* <Button onClick={this.closeModal}>Close</Button> */}
               <Button type="submit" size="sm" onClick={this.handleRegister}>
                 Daftar
               </Button>

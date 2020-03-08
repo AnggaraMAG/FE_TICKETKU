@@ -20,7 +20,7 @@ class Jadwal extends Component {
       let duration = moment.duration(endTime.diff(startTime));
       let hours = parseInt(duration.asHours());
       let minutes = parseInt(duration.asMinutes()) - hours * 60;
-      return `${hours} Jam ${minutes} Mnt`;
+      return `${hours} Jam ${minutes} Menit`;
     };
     const { data: kereta } = this.props.trains;
     return (

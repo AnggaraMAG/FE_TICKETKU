@@ -12,8 +12,6 @@ class Header extends Component {
     this.props.getUser();
   }
   render() {
-    // console.log(this.props.user, 'woi')
-    // const { isLogin } = this.props.user;
     const { isLogin } = this.props.user;
     return (
       <>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, Alert } from "react-bootstrap";
 import { connect } from "react-redux";
 import { login } from "../../_actions/auth";
 
@@ -58,8 +58,12 @@ class Login extends Component {
                 <strong>Masuk</strong>
               </Modal.Title>
             </Modal.Header>
-            <h6 style={{ marginLeft: 100, color: "red" }}>
-              {verif === false ? <p>Password or email wrong</p> : ""}
+            <h6 style={{color: "red" }}>
+              {verif === false ? (
+                <Alert variant="danger">Password or email wrong</Alert>
+              ) : (
+                ""
+              )}
             </h6>
             <Modal.Body>
               <Form.Group>
