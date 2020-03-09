@@ -15,6 +15,7 @@ import qrcode from "../images/qrcode.jpg";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getMyticket } from "../../_actions/myticket";
+import Alert from "./Modal/Alert";
 
 class Invoice extends Component {
   componentDidMount() {
@@ -94,9 +95,7 @@ class Invoice extends Component {
                         </td>
                       </tr>
                     </Table>
-                    <Button variant="info" className="mb-5 mt-3">
-                      Bayar Sekarang
-                    </Button>
+                    <Alert />
                   </Col>
                   <Row>
                     <Col>
@@ -168,7 +167,7 @@ class Invoice extends Component {
             </Row>
           ))}
         </Container>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

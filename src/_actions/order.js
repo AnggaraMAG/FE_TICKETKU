@@ -1,4 +1,4 @@
-import { GET_ORDERS, GET_ORDER } from "../config/constans";
+import { GET_ORDERS, PUT_STATUS, DELETE_ORDER } from "../config/constans";
 import { API } from "../config/api";
 
 export const getOrders = () => {
@@ -12,13 +12,26 @@ export const getOrders = () => {
   };
 };
 
-export const getOrderid = id => {
+export const putStatus = (id, data) => {
   return {
-    type: GET_ORDER,
+    type: PUT_STATUS,
     payload: async () => {
-      const res = await API.get(`/order/${id}`);
-      const { data } = res.data;
-      return data;
+      const res = await API.put(`/order/${id}`, {
+        data
+      });
+      const { x } = res.data;
+      return x;
+    }
+  };
+};
+
+export const deleteOrder = id => {
+  return {
+    type: DELETE_ORDER,
+    payload: async () => {
+      const res = await API.delete(`/order/${id}`);
+      const { x } = res.data;
+      return x;
     }
   };
 };

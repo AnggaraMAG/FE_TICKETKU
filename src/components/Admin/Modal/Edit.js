@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getOrderid } from "../../../_actions/order";
+import { putStatus } from "../../../_actions/order";
 
 class Edit extends Component {
-  componentDidMount() {
-    this.props.getOrderid();
-  }
   constructor(props) {
     super(props);
     this.state = {
-      login: false
+      login: false,
+      status: null
     };
   }
 
@@ -24,9 +22,21 @@ class Edit extends Component {
       login: false
     });
   };
-  handleEdit = () => {
-    const id = this.props.idorderx;
-    this.props.getOrderid(id);
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+
+    // console.log(e.target.value);
+  };
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    const data = this.state.status;
+    const id = this.props.data.id;
+    this.props.putStatus(id, data);
+    window.location.reload(false);
   };
   render() {
     return (
@@ -51,14 +61,21 @@ class Edit extends Component {
               <Form.Control value={this.props.data.attachment} readOnly />
             </Form.Group>
             <Form.Group>
-              <Form.Control as="select">
+              <Form.Control
+                as="select"
+                onChange={this.handleChange}
+                name="status"
+              >
+                <option value="">Status</option>
                 <option value="approved">Approved</option>
                 <option value="pending">Pending</option>
               </Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button size="sm">Edit</Button>
+            <Button size="sm" onClick={this.handleSubmit}>
+              Edit
+            </Button>
           </Modal.Footer>
         </Modal>
       </>
@@ -67,12 +84,12 @@ class Edit extends Component {
 }
 const mapStateToProps = state => {
   return {
-    idorder: state.trains
+    putstatus: state.orders
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getOrderid: id => dispatch(getOrderid(id))
+    putStatus: (id, data) => dispatch(putStatus(id, data))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Edit);

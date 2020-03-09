@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import Edit from "./Admin/../Modal/Edit";
 import Detail from "../Admin/Modal/Detail";
+import Delete from "../Admin/Modal/Delete";
 import { connect } from "react-redux";
 import { getOrders } from "../../_actions/order";
 
@@ -37,9 +38,7 @@ class Transaksi extends Component {
                 <td>{item.status}</td>
                 <td>
                   <Edit data={item} /> <Detail data={item} />{" "}
-                  <Button variant="danger" size="sm">
-                    Delete
-                  </Button>{" "}
+                  <Delete data={item} />{" "}
                 </td>
               </tr>
             ))}
