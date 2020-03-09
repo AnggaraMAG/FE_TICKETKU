@@ -16,7 +16,7 @@ export default class App extends Component {
         <Route path="/admin">
           <Admin />
         </Route>
-        <Route path="/invoice">
+        <Route path="/invoice/:id">
           <Invoice />
         </Route>
         <Route path="/ticketku">

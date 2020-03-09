@@ -1,4 +1,9 @@
-import { GET_ORDERS, PUT_STATUS, DELETE_ORDER } from "../config/constans";
+import {
+  GET_ORDERS,
+  PUT_STATUS,
+  DELETE_ORDER,
+  UPLOAD_IMAGE
+} from "../config/constans";
 import { API } from "../config/api";
 
 export const getOrders = () => {
@@ -30,6 +35,21 @@ export const deleteOrder = id => {
     type: DELETE_ORDER,
     payload: async () => {
       const res = await API.delete(`/order/${id}`);
+      const { x } = res.data;
+      return x;
+    }
+  };
+};
+
+export const uploadimage = (formData, id) => {
+  return {
+    type: UPLOAD_IMAGE,
+    payload: async () => {
+      const res = await API.post(`/upload/${id}`,formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
       const { x } = res.data;
       return x;
     }

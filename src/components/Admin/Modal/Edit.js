@@ -31,7 +31,7 @@ class Edit extends Component {
     // console.log(e.target.value);
   };
 
-  handleSubmit = async e => {
+  handleSubmit = e => {
     e.preventDefault();
     const data = this.state.status;
     const id = this.props.data.id;

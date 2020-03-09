@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Col, Row, Container, Card, Table, Form } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Container,
+  Card,
+  Table,
+  Form,
+  Button
+} from "react-bootstrap";
 import Navabar from "../Landing/Navbar";
 import Footer from "../Landing/Footer";
 import "./CSS/Invoice.css";
@@ -7,12 +15,15 @@ import qrcode from "../images/qrcode.jpg";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getMyticket } from "../../_actions/myticket";
-import Alert from "./Modal/Alert";
+// import Alert from "./Modal/Alert";
+import { uploadimage } from "../../_actions/order";
+import { useParams } from "react-router-dom";
 
 class Invoice extends Component {
   componentDidMount() {
     this.props.getMyticket();
   }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,8 +31,24 @@ class Invoice extends Component {
       preview: null
     };
   }
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+    console.log(e.target.value);
+  };
+  handlePay = file => {
+    if (file) {
+      const formData = new FormData();
+      formData.append("payment", file);
+      this.props.uploadimage(formData);
+      console.log(formData);
+    }
+  };
   render() {
-    const { data, loading } = this.props.myticket;
+    const { data } = this.props.myticket;
+    const { file } = this.state;
 
     return (
       <div>
@@ -87,7 +114,14 @@ class Invoice extends Component {
                         </td>
                       </tr>
                     </Table>
-                    <Alert load={loading} />
+                    {/* <Alert load={loading} onClick={this.handlePay(file)} /> */}
+                    <Button
+                      style={{ marginBottom: 50 }}
+                      variant="info"
+                      onClick={this.handlePay(file)}
+                    >
+                      Pesan Sekarang!
+                    </Button>
                   </Col>
                   <Row>
                     <Col>
@@ -102,7 +136,7 @@ class Invoice extends Component {
                           id="contained-button-file"
                           multiple
                           type="file"
-                          name="attachment"
+                          name="file"
                           onChange={e => {
                             this.setState({
                               preview: URL.createObjectURL(e.target.files[0]),
@@ -167,12 +201,14 @@ class Invoice extends Component {
 
 const mapStateToProps = state => {
   return {
-    myticket: state.myticket
+    myticket: state.myticket,
+    uploadimg: state.order
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getMyticket: () => dispatch(getMyticket())
+    getMyticket: () => dispatch(getMyticket()),
+    uploadimage: formData => dispatch(uploadimage(formData))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Invoice);

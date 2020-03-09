@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal, Form, Alert } from "react-bootstrap";
 import { connect } from "react-redux";
 import { login } from "../../_actions/auth";
+// import Loading from "../images/loading3.gif";
 
 class Login extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class Login extends Component {
                 <strong>Masuk</strong>
               </Modal.Title>
             </Modal.Header>
-            <h6 style={{color: "red" }}>
+            <h6 style={{ color: "red" }}>
               {verif === false ? (
                 <Alert variant="danger">Password or email wrong</Alert>
               ) : (

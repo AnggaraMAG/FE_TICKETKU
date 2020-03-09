@@ -5,6 +5,7 @@ import "./CSS/Ticketsaya.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getMyticket } from "../../_actions/myticket";
+import QRCode from "qrcode-react";
 
 class Ticketsaya extends Component {
   componentDidMount() {
@@ -78,6 +79,15 @@ class Ticketsaya extends Component {
                     <strong>Kereta Api</strong>
                   </h4>
                   <h6 className="satur">{item.train.dateStart}</h6>
+                  {item.status == "Pending" ? (
+                    ""
+                  ) : (
+                    <QRCode
+                      style={{ display: "block" }}
+                      alt="qrcode"
+                      value={item.id}
+                    />
+                  )}
                 </Col>
               </Row>
               <Row>
@@ -102,8 +112,16 @@ class Ticketsaya extends Component {
                   </Table>
                 </Col>
                 <Col className="mt-5">
-                  <Link to="/invoice">
-                    <Button variant="danger">Bayar Sekarang</Button>
+                  <Link to={`/invoice/${item.user.id}`}>
+                    {item.status == "Pending" ? (
+                      <Button style={{ display: "block" }} variant="danger">
+                        Bayar Sekarang
+                      </Button>
+                    ) : (
+                      <Button style={{ display: "none" }} variant="danger">
+                        Bayar Sekarang
+                      </Button>
+                    )}
                   </Link>
                 </Col>
               </Row>
