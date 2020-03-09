@@ -23,7 +23,7 @@ class Alert extends Component {
   render() {
     return (
       <div className="mb-5">
-        <Button variant="info" size="sm" onClick={this.openModal}>
+        <Button variant="info" onClick={this.openModal}>
           Bayar Sekarang
         </Button>
         <Modal show={this.state.login} onHide={this.closeModal}>
@@ -36,7 +36,7 @@ class Alert extends Component {
                 Ya
               </Button>
             </Link>
-            <Button size="sm" variant="info" onClick={this.closeModal}>
+            <Button size="sm" variant="danger" onClick={this.closeModal}>
               Tidak
             </Button>
           </Modal.Footer>

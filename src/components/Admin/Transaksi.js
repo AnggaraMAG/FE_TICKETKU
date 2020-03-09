@@ -14,6 +14,11 @@ class Transaksi extends Component {
     const { data } = this.props.orders;
     return (
       <>
+        <div>
+          <h3 style={{ marginLeft: 100, marginTop: 50 }}>
+            <b>List Transaksi</b>            
+            </h3>
+        </div>
         <Table striped bordered hover className="container mt-4">
           <thead>
             <tr>

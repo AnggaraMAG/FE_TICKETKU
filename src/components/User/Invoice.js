@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  Card,
-  Table,
-  Button,
-  Form
-} from "react-bootstrap";
+import { Col, Row, Container, Card, Table, Form } from "react-bootstrap";
 import Navabar from "../Landing/Navbar";
 import Footer from "../Landing/Footer";
 import "./CSS/Invoice.css";
@@ -29,7 +21,7 @@ class Invoice extends Component {
     };
   }
   render() {
-    const { data } = this.props.myticket;
+    const { data, loading } = this.props.myticket;
 
     return (
       <div>
@@ -95,7 +87,7 @@ class Invoice extends Component {
                         </td>
                       </tr>
                     </Table>
-                    <Alert />
+                    <Alert load={loading} />
                   </Col>
                   <Row>
                     <Col>
@@ -167,7 +159,7 @@ class Invoice extends Component {
             </Row>
           ))}
         </Container>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }
