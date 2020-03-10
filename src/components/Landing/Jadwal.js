@@ -6,6 +6,7 @@ import { getTypes } from "../../_actions/types";
 import { toRupiah } from "indo-formatter";
 import "./Css/Jadwal.css";
 import moment from "moment";
+import Pesen from "./Model/Pesen";
 
 class Jadwal extends Component {
   componentDidMount() {
@@ -33,6 +34,7 @@ class Jadwal extends Component {
               <th>Tiba</th>
               <th>Durasi</th>
               <th>Harga Per Orang</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody className="warna">
@@ -52,6 +54,9 @@ class Jadwal extends Component {
                 </td>
                 <td>{getDuration(item.timeStart, item.timeArrival)}</td>
                 <td style={{ color: "red" }}>{toRupiah(item.price)}</td>
+                <td>
+                  <Pesen data={item} />
+                </td>
               </tr>
             ))}
           </tbody>

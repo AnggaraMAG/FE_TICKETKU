@@ -6,13 +6,15 @@ import "../Landing/Css/Navbar.css";
 import Usernav from "../User/Usernav";
 import { connect } from "react-redux";
 import { getUser } from "../../_actions/user";
+import Admin from "../Admin/AdminNav";
+import { Redirect } from "react-router-dom";
 
 class Header extends Component {
   componentDidMount() {
     this.props.getUser();
   }
   render() {
-    const { isLogin } = this.props.user;
+    const { isLogin, data } = this.props.user;
     return (
       <>
         <Navbar className="background" expand="lg">
@@ -21,7 +23,12 @@ class Header extends Component {
           </Navbar.Brand>
           <Nav className="mr-auto"></Nav>
           <Form inline>
-            {isLogin ? (
+            {data.roles === "admin" ? (
+              <>
+                <Admin />
+                <Redirect to="/admin" />
+              </>
+            ) : isLogin ? (
               <Usernav />
             ) : (
               <>

@@ -3,7 +3,8 @@ import {
   GET_ORDER,
   PUT_STATUS,
   DELETE_ORDER,
-  UPLOAD_IMAGE
+  UPLOAD_IMAGE,
+  USER_TICKET
 } from "../config/constans";
 
 const initialState = {
@@ -19,6 +20,7 @@ const reducer = (state = initialState, action) => {
     case `${PUT_STATUS}_PENDING`:
     case `${DELETE_ORDER}_PENDING`:
     case `${UPLOAD_IMAGE}_PENDING`:
+    case `${USER_TICKET}_PENDING`:
       return {
         ...state,
         loading: true
@@ -28,6 +30,7 @@ const reducer = (state = initialState, action) => {
     case `${PUT_STATUS}_FULFILLED`:
     case `${DELETE_ORDER}_FULFILLED`:
     case `${UPLOAD_IMAGE}_FULFILLED`:
+    case `${USER_TICKET}_FULFILLED`:
       return {
         ...state,
         data: action.payload,
@@ -38,6 +41,7 @@ const reducer = (state = initialState, action) => {
     case `${PUT_STATUS}_REJECTED`:
     case `${DELETE_ORDER}_REJECTED`:
     case `${UPLOAD_IMAGE}_REJECTED`:
+    case `${USER_TICKET}_REJECTED`:
       return {
         ...state,
         loading: false,

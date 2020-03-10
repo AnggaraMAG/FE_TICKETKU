@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, Row, Col, Table } from "react-bootstrap";
+import { Button, Modal, Row, Col, Table, Image } from "react-bootstrap";
 import qrcode from "../../images/qrcode.jpg";
 
 class Edit extends Component {
@@ -22,7 +22,7 @@ class Edit extends Component {
   };
   render() {
     // const { login } = this.state;
-    return (
+    return this.props.data.attachment ? (
       <>
         <Button variant="success" size="sm" onClick={this.openModal}>
           Detail
@@ -105,26 +105,18 @@ class Edit extends Component {
               </Col>
               <Col>
                 <p>upload payment proof</p>
+                <Image
+                  style={{ width: 200 }}
+                  src={require(`../../../images/${this.props.data.attachment}`)}
+                />
               </Col>
             </Row>
           </Modal.Body>
           <Modal.Footer>
-            {/* <Row>
-              <Col sm={3}>
-                <h3>
-                  <strong>Total:</strong>
-                </h3>
-              </Col>
-              <Col>
-                <h4 style={{ color: "red" }}>
-                  Rp.{this.props.data.totalprice}
-                </h4>
-              </Col>
-            </Row> */}
           </Modal.Footer>
         </Modal>
       </>
-    );
+    ) : null;
   }
 }
 export default Edit;

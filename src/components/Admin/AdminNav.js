@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import { Navbar, Form, Nav, Dropdown, DropdownButton } from "react-bootstrap";
 import "../Landing/Css/Navbar.css";
 import Tambah from "../Admin/Modal/Tambah";
+import { Link } from "react-router-dom";
 
 export default class AdminNav extends Component {
+  handleLogout = e => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.reload(false);
+  };
   render() {
     return (
       <div>
@@ -23,7 +29,9 @@ export default class AdminNav extends Component {
               <Dropdown.Item>
                 <Tambah />
               </Dropdown.Item>
-              <Dropdown.Item as="button">Keluar</Dropdown.Item>
+              <Dropdown.Item as="button" onClick={this.handleLogout}>
+                <Link to="/">Keluar</Link>
+              </Dropdown.Item>
             </DropdownButton>
           </Form>
         </Navbar>

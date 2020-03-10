@@ -32,7 +32,7 @@ class Usernav extends Component {
               <Link to="/ticketku">Payment</Link>
             </Dropdown.Item>
             <Dropdown.Item as="button" onClick={this.handleLogout}>
-              Keluar
+              <Link to="/">Keluar</Link>
             </Dropdown.Item>
           </DropdownButton>
         </Form>

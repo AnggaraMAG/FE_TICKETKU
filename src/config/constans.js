@@ -11,3 +11,4 @@ export const GET_MYTICKET = "GET_MYTICKET";
 export const PUT_STATUS = "PUT_STATUS";
 export const DELETE_ORDER = "DELETE_ORDER";
 export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
+export const USER_TICKET = "USER_TICKET";

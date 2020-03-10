@@ -12,7 +12,7 @@ import Navabar from "../Landing/Navbar";
 import Footer from "../Landing/Footer";
 import "./CSS/Invoice.css";
 import qrcode from "../images/qrcode.jpg";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getMyticket } from "../../_actions/myticket";
 // import Alert from "./Modal/Alert";
@@ -38,13 +38,15 @@ class Invoice extends Component {
     });
     console.log(e.target.value);
   };
-  handlePay = file => {
-    if (file) {
-      const formData = new FormData();
-      formData.append("payment", file);
-      this.props.uploadimage(formData);
-      console.log(formData);
-    }
+  handlePay = (file, idx) => {
+    // e.preventDefault();
+    const id = idx.idx;
+    const formData = new FormData();
+    formData.append("payment", file);
+    this.props.uploadimage(formData, id);
+    // console.log(formData, idx, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+    window.location.reload(false);
   };
   render() {
     const { data } = this.props.myticket;
@@ -118,9 +120,9 @@ class Invoice extends Component {
                     <Button
                       style={{ marginBottom: 50 }}
                       variant="info"
-                      onClick={this.handlePay(file)}
+                      onClick={() => this.handlePay(file, { idx: item.id })}
                     >
-                      Pesan Sekarang!
+                      <Link to="/ticketku">Pesan Sekarang!</Link>
                     </Button>
                   </Col>
                   <Row>
@@ -208,7 +210,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMyticket: () => dispatch(getMyticket()),
-    uploadimage: formData => dispatch(uploadimage(formData))
+    uploadimage: (formData, id) => dispatch(uploadimage(formData, id))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Invoice);
