@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import { Form, Col, Card, Row, Table, Button } from "react-bootstrap";
 import bullet from "../images/repeat.png";
-
-export default class Body extends Component {
+import { connect } from "react-redux";
+import { Search } from "../../_actions/search";
+import { getTrains } from "../../_actions/trains";
+import Jadwal from "../Landing/Jadwal";
+class Body extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value1: "",
       value2: ""
     };
+  }
+  componentDidMount() {
+    this.props.getTrains();
+    const stasiunawal = this.state.value1;
+    const stasiunakhir = this.state.value2;
+    this.props.Search(stasiunawal, stasiunakhir);
   }
   handlechange1 = e => {
     this.setState({ value1: e.target.value });
@@ -21,8 +30,16 @@ export default class Body extends Component {
     this.setState({ value2: this.state.value1 });
     this.setState({ value1: this.state.value2 });
   };
+
+  handlesearch = () => {
+    const stationawal = this.state.value1;
+    const stationakhir = this.state.value2;
+    this.props.Search(stationawal, stationakhir);
+  };
   render() {
     const { value1, value2 } = this.state;
+    const { data } = this.props.trains;
+    const { data: datasearch } = this.props.search;
     return (
       <div className="container" style={{ marginTop: -50 }}>
         <Card className="shadow" style={{ padding: 20 }}>
@@ -38,10 +55,18 @@ export default class Body extends Component {
                     <strong>Asal</strong>
                   </Form.Label>
                   <Form.Control
+                    as="select"
                     type="text"
-                    value={value2}
-                    onChange={this.handlechange2}
-                  />
+                    value={value1}
+                    onChange={this.handlechange1}
+                  >
+                    <option>Pilih Station Awal</option>
+                    {data.map((item, index) => (
+                      <>
+                        <option key={index}>{item.station1}</option>
+                      </>
+                    ))}
+                  </Form.Control>
                   <Row>
                     <Col xs={6}>
                       <Form.Label className="mt-3">
@@ -80,10 +105,18 @@ export default class Body extends Component {
                     <strong>Tujuan</strong>
                   </Form.Label>
                   <Form.Control
+                    as="select"
                     type="text"
-                    value={value1}
-                    onChange={this.handlechange1}
-                  />
+                    value={value2}
+                    onChange={this.handlechange2}
+                  >
+                    <option>Pilih Station Akhir</option>
+                    {data.map((item, index) => (
+                      <>
+                        <option key={index}>{item.station2}</option>
+                      </>
+                    ))}
+                  </Form.Control>
                   <Row className="mt-4">
                     <Col xs={4}>
                       <Form.Group>
@@ -112,7 +145,11 @@ export default class Body extends Component {
                       </Form.Group>
                     </Col>
                     <Col xs={4} className="mt-4">
-                      <Button size="sm" variant="danger">
+                      <Button
+                        size="sm"
+                        variant="danger"
+                        onClick={this.handlesearch}
+                      >
                         Cari Ticket
                       </Button>
                     </Col>
@@ -122,7 +159,28 @@ export default class Body extends Component {
             </Row>
           </Form>
         </Card>
+        <Jadwal
+          data={datasearch && datasearch}
+          from={this.state.value1}
+          to={this.state.value2}
+        />
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    search: state.search,
+    trains: state.trains
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    Search: (stationawal, stationakhir) =>
+      dispatch(Search(stationawal, stationakhir)),
+    getTrains: () => getTrains()
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body);

@@ -131,7 +131,9 @@ class Alert extends Component {
           <Modal.Footer>
             <Link to="/ticketku">
               <Button size="sm" variant="primary" onClick={this.handleSubmit}>
-                Ya
+                <Link to="/invoice">
+                  <b style={{ color: "white" }}>Ya</b>
+                </Link>
               </Button>
             </Link>
             <Button size="sm" variant="danger" onClick={this.closeModal}>

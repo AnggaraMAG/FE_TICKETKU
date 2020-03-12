@@ -103,8 +103,10 @@ class Invoice extends Component {
                           <tr>( Bayi ) x {item.qtybaby}</tr>
                         </td>
                         <td>
-                          <tr>Rp. {item.adultprice}</tr>
-                          <tr>Rp. {item.babyprice}</tr>
+                          {/* <tr>Rp. {item.adultprice}</tr> */}
+                          <tr>Rp. 50.000</tr>
+                          {/* <tr>Rp. {item.babyprice}</tr> */}
+                          <tr>Rp. 50.000</tr>
                         </td>
                       </tbody>
                       <tr className="bgtotal">
@@ -122,7 +124,9 @@ class Invoice extends Component {
                       variant="info"
                       onClick={() => this.handlePay(file, { idx: item.id })}
                     >
-                      <Link to="/ticketku">Pesan Sekarang!</Link>
+                      <Link to="/ticketku">
+                        <b style={{ color: "black" }}>Pesan Sekarang!</b>
+                      </Link>
                     </Button>
                   </Col>
                   <Row>

@@ -5,6 +5,7 @@ import user from "../_reducers/user";
 import types from "../_reducers/types";
 import orders from "../_reducers/order";
 import myticket from "../_reducers/myticket";
+import search from "../_reducers/search";
 
 import { logger, promise } from "../middleware";
 
@@ -14,7 +15,8 @@ const rootReducers = combineReducers({
   user,
   types,
   orders,
-  myticket
+  myticket,
+  search
 });
 
 const store = createStore(rootReducers, applyMiddleware(logger, promise));

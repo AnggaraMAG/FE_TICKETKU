@@ -14,9 +14,11 @@ export default class AdminNav extends Component {
     return (
       <div>
         <Navbar className="background" expand="lg">
-          <Navbar.Brand>
-            <strong className="colorBrand">TicketKu</strong>
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>
+              <strong className="colorBrand">TicketKu</strong>
+            </Navbar.Brand>
+          </Link>
           <Nav className="mr-auto"></Nav>
           <Form inline style={{ marginRight: 80 }}>
             <DropdownButton

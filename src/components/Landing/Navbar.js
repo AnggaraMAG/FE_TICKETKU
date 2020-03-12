@@ -7,7 +7,7 @@ import Usernav from "../User/Usernav";
 import { connect } from "react-redux";
 import { getUser } from "../../_actions/user";
 import Admin from "../Admin/AdminNav";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class Header extends Component {
   componentDidMount() {
@@ -18,9 +18,11 @@ class Header extends Component {
     return (
       <>
         <Navbar className="background" expand="lg">
-          <Navbar.Brand>
-            <strong className="colorBrand">TicketKu</strong>
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>
+              <strong className="colorBrand">TicketKu</strong>
+            </Navbar.Brand>
+          </Link>
           <Nav className="mr-auto"></Nav>
           <Form inline>
             {data.roles === "admin" ? (

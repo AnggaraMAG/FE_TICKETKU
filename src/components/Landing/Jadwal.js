@@ -7,6 +7,8 @@ import { toRupiah } from "indo-formatter";
 import "./Css/Jadwal.css";
 import moment from "moment";
 import Pesen from "./Model/Pesen";
+import { Link } from "react-router-dom";
+import { Search } from "../../_actions/search";
 
 class Jadwal extends Component {
   componentDidMount() {
@@ -23,7 +25,7 @@ class Jadwal extends Component {
       let minutes = parseInt(duration.asMinutes()) - hours * 60;
       return `${hours} Jam ${minutes} Menit`;
     };
-    const { data: kereta } = this.props.trains;
+    // const { datasearch: kereta } = data;
     return (
       <div className="container mt-5">
         <Table responsive className="text-center">
@@ -38,11 +40,11 @@ class Jadwal extends Component {
             </tr>
           </thead>
           <tbody className="warna">
-            {kereta.map((item, index) => (
+            {this.props.data.map((item, index) => (
               <tr key={index}>
                 <td>
                   <h6>{item.nameTrain}</h6>
-                  <p>{item.type.name}</p>
+                  {/* <p>{item.type.name}</p> */}
                 </td>
                 <td>
                   <h6>{item.timeStart}</h6>
@@ -74,7 +76,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getTrains: () => dispatch(getTrains()),
-    Types: () => dispatch(getTypes())
+    Types: () => dispatch(getTypes()),
+    Search: () => dispatch(Search())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Jadwal);
