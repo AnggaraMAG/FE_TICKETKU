@@ -41,7 +41,7 @@ npm install
 
   
 For the server setup, first, make sure your MySQL services is running fine. In `server` directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
-
+```
 "development": {
     "username": "root",
     "password": null,
@@ -50,7 +50,7 @@ For the server setup, first, make sure your MySQL services is running fine. In `
     "dialect": "mysql",
     "operatorsAliases": false
   },
-  
+  ```
   ```
 npm run build
 ```
