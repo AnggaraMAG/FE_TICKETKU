@@ -1,68 +1,82 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TicketKu
+Online ticket booking application. Book tickets anytime, anywhere.
 
-## Available Scripts
 
-In the project directory, you can run:
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Server Setup](#server-setup)
+  - [Client Setup](#client-setup)
+- [Screenshots](#screenshots)
+- [Built With](#built-with)
+- [Author](#author)
+- [License](#license)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Before starting to install the project, there're some things that need to be done first.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+Make sure all of these are properly installed in your system.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Application  | Download                                                                            |
+| ------------ | ----------------------------------------------------------------------------------- |
+| Git          | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux) / [Mac](https://git-scm.com/download/mac)  |
+| Node.js      | [Link](https://nodejs.org/en/download/)                                             |
+| MySQL        | [Link](https://www.mysql.com/downloads/)         
 
-### `npm run build`
+### Installation|
+```
+First, clone this repository into your system. and clone API 
+Frontend : https://github.com/AnggaraMAG/FE_TICKETKU,
+Backend API : https://github.com/AnggaraMAG/BE_TICKETKU
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then, install all the packages that described in `package.json` of both `client` and `server` directories.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Client Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Before running the application, we need to configure an environtment variable for the client, let's find .env file in client's root project, open and edit it.
 
-### `npm run eject`
+```
+REACT_APP_BASE_BACKEND_URL=http://localhost:5000
+```
+Note that the REACT_APP_BASE_BACKEND_URL above is the address of the server previously run, making sure the ip and port are the same with server address.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Then, run the web application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm run start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Wait till the application is opened into your browser. Now, you can explore Landtick and its features. Enjoy!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Screenshots
 
-## Learn More
+<strong>Landing Page</strong>
+![Landingpage](https://user-images.githubusercontent.com/51870433/76189673-de2fe880-620d-11ea-9b20-1a623d67b21a.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<strong>Myticket</strong>
+![Ticketku](https://user-images.githubusercontent.com/51870433/76189742-0c152d00-620e-11ea-9f21-f433dd8a2ff7.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<strong>Invoice</strong>
+![Invoice](https://user-images.githubusercontent.com/51870433/76189796-22bb8400-620e-11ea-8a71-2b5a74fc3033.png)
 
-### Code Splitting
+<strong>Admin Dashboard</strong>
+![Admin](https://user-images.githubusercontent.com/51870433/76189806-264f0b00-620e-11ea-8d96-83fe8372b73c.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Built With
 
-### Analyzing the Bundle Size
+- [React JS](https://reactjs.org/) - Front-end
+- [Express JS](https://expressjs.com) - Back-end
+- [MySQL](https://www.mysql.com) - Database
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Author
 
-### Making a Progressive Web App
+**M Anggara Gultom** - [AnggaraMAG](https://github.com/AnggaraMAG)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## License
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is licensed under the GNU General Public v3.0 License - see the [LICENSE](LICENSE) file for details
