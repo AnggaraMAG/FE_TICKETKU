@@ -80,3 +80,4 @@ Wait till the application is opened into your browser. Now, you can explore Land
 ## License
 
 This project is licensed under the GNU General Public v3.0 License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the GNU General Public v3.0 License - see the [LICENSE](LICENSE) file for details
